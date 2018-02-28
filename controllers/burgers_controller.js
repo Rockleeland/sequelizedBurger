@@ -32,26 +32,21 @@ module.exports = function (app) {
             res.json(
                 data
             );
-            console.log(data)
-;
+            console.log(data);
         })
     });
     // Update a burger
-    app.put("/burgers/:devoured", function (req, res) {
+    app.put("/burgers/:id", function (req, res) {
         db.burgers.update({
-                burger_name: req.body.burger_name,
-                devoured: req.body.devoured 
-                
+                //burger_name: req.body.burger_name,
+                devoured: 1
+
             }, {
                 where: {
-                    id: req.body.id ==1
+                    id: req.params.id
                 }
             })
-            .then(function (err, data) {
-                if (err) {
-                    return res.status(503).end()
-                }
-
+            .then(function (data) {
                 if (data.changedRows === 0) {
                     // If no rows were changed, then the ID must not exist, so 404
                     return res.status(404).end();
@@ -72,7 +67,7 @@ module.exports = function (app) {
                 //     }
 
                 //     res.status(200).end();
-            
+
             })
 
     });
