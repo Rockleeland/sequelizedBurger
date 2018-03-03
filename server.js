@@ -8,7 +8,7 @@ var db = require('./models');
 // Sets up the Express App
 // =============================================================
 var app = express();
-var PORT = process.env.PORT || 8080;
+var PORT = process.env.PORT || 3306;
 
  
 // override with the X-HTTP-Method-Override header in the request
